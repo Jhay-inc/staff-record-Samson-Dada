@@ -1,0 +1,29 @@
+﻿
+class
+1 staff members account
+2 staff 
+
+
+
+  method
+// add and remove staff role
+// transfer role 
+// change user role
+// delete user role
+// print record of register account (List)
+// ID card (bool) for color
+
+property
+
+// firstname, lastname, email, password
+
+// All staff should be able
+· Register
+· Login
+· Edit account details
+
+///
+Principal
+· Teacher
+· Exam officer
+· Admin
