@@ -8,10 +8,17 @@ namespace StaffRecord
 {
     public  class StaffRoles
     {
+
         public string pincipalRole = "Pincipal";
         public string teacher = "Teacher";
         public string examOfficer = "Exam Officer";
         public string admin = "Admin";
+        //public StaffRecord(string roles)
+        //{
+           
+        //}
+
+
         //public void Role()
         //{
         //    List<string> roles = new List<string>();

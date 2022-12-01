@@ -6,10 +6,7 @@ namespace StaffRecord
     public class StaffRecord
     {
       
-        public void EditAccount()
-        {
-
-        }
+    
         /*
          Principal’s ID card is grey in color
 ·        Teachers ID card is blue in color
