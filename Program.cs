@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace StaffRecord
 {
@@ -6,7 +7,8 @@ namespace StaffRecord
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            StaffOperations staff = new StaffOperations();
+            Console.WriteLine("Hello World! program");
         }
     }
 }

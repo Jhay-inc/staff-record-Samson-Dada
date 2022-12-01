@@ -27,3 +27,94 @@ Principal
 · Teacher
 · Exam officer
 · Admin
+
+// To impliment 
+       public static void TheString()
+        {
+            //List<string> colorList= new List<string>();
+            int color = 0;
+            HashSet<string> setOfColor = new HashSet<string>();
+            setOfColor.Add("Yellow");
+            setOfColor.Add("Green");
+            setOfColor.Add("Blue");
+            if (setOfColor.Contains("Yellow")) 
+            {
+                color = 1;
+                Console.WriteLine("Color: "+ color);
+            }
+        }
+
+
+
+         int enterKey;
+            bool isDepartment;
+            do
+            {
+            Console.WriteLine("\n Members academic department? press 1 || Members of non-academic press 2");
+                isDepartment = int.TryParse(Console.ReadLine(), out enterKey);
+                Console.Clear();
+                if (!isDepartment)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Not a department. Please retry!");
+                    Console.ResetColor();
+                }
+
+                if (enterKey == 1)
+                {
+                    Console.WriteLine("Enter 1 for Principal || Enter 2 for Teacher || Enter 3 for Exam officer || Enter 4 for Admin");
+
+                    string key = Console.ReadLine();
+                    int AcademicOption = Convert.ToInt16(key);
+                    switch (AcademicOption)
+                    {
+                        case 1:
+                            AddRole(role);
+                            Console.WriteLine(role);
+                            Console.WriteLine();
+                            break;
+                        case 2:
+                            AddRole(role);
+                            Console.WriteLine(role);
+                            break;
+                        case 3:
+                            AddRole(role);
+                            Console.WriteLine(role);
+                            break;
+                        case 4:
+                            AddRole(role);
+                            Console.WriteLine(role);
+                            break;
+                        default:
+                            Console.WriteLine("Retry");
+                            break;
+
+                    }
+                }
+                else if (enterKey == 2)
+                {
+                    Console.WriteLine("Non academic department Enter details");
+                    //firstname
+                    Console.WriteLine("Enter firstname");
+                    firstName = Console.ReadLine();
+                    Thread.Sleep(400);
+                    Console.Clear();
+
+                    //second name
+                    Console.WriteLine("Enter lastname");
+                    lastName = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.Clear();
+
+                    //email
+                    Console.WriteLine("Enter email");
+                    email = Console.ReadLine();
+                    Console.WriteLine();
+                    Console.Clear();
+
+                    //password
+                    Console.WriteLine("Enter password");
+                    password = Console.ReadLine();
+                }
+            }
+            while (!isDepartment);
