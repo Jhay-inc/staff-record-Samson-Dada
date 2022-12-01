@@ -18,6 +18,10 @@ namespace StaffRecord
             int departmentOption = Convert.ToInt16(key);
             if (departmentOption == 1)
             {
+                if (departmentOption == 1)
+                {
+                    //string testRole = "Non Teaching role";
+
                 Console.WriteLine("Non Academic department Enter details............");
                 //firstname
                 Console.WriteLine("Enter firstname");
@@ -40,10 +44,21 @@ namespace StaffRecord
                 //password
                 Console.WriteLine("Enter password");
                 string password = Console.ReadLine();
-                StaffRegister(firstName, lastName, email, password, role);
+                    //Math.Round(100);
+                   //long staffId = Convert.ToInt64(Console.ReadLine());
+
+                StaffRegister(firstName, lastName, email, password);
+                    DateTime testDate = DateTime.Now;
+                    Console.WriteLine(testDate);
+                }
             }
             else if (departmentOption == 2)
             {
+
+                if(departmentOption == 2)
+                {
+                    Console.WriteLine("Enter 1 for Principal || Enter 2 for Teacher || Enter 3 for Exam officer || Enter 4 for Admin");
+                    string testRole = "Principal";
                 Console.WriteLine("Academic department Enter details");
                 //firstname
                 Console.WriteLine("Enter firstname");
@@ -68,7 +83,10 @@ namespace StaffRecord
                 string password = Console.ReadLine();
                 Console.Clear();
 
-                StaffRegister(firstName, lastName, email, password, role);
+
+
+                StaffRegister(firstName, lastName, email, password);
+                }
             }
             //else{
             //    bool isDepartment;
@@ -88,14 +106,10 @@ namespace StaffRecord
 
         }
 
-        public void StaffRegister(string firstName, string lastName, string email, string password, string role)
+        public void StaffRegister(string firstName, string lastName, string email, string password)
         {
-            List<string> roleList = new List<string>();
-            //DepartmentRole = roleList;
-            roleList.Add(role);
-            //
-          
-            Console.WriteLine("Enter 1 for Principal || Enter 2 for Teacher || Enter 3 for Exam officer || Enter 4 for Admin");
+
+            string role = "Teacher";
             string key = Console.ReadLine();
             Console.Clear();
                 int AcademicOption = Convert.ToInt16(key);
@@ -125,15 +139,33 @@ namespace StaffRecord
             ////////////////// dataBase class
             List<StaffRecord> staffLists = new List<StaffRecord>();
             staffLists.Add(new StaffRecord());
-            staffLists[0].FirstName = firstName;
-            staffLists[0].LastName = lastName;
-            staffLists[0].Email = email;
-            staffLists[0].Password = password;
-            Console.WriteLine("-----------------------------------------------------------------------");
-            Console.WriteLine("FirstName   |  LastName     | Email    | Password | Role");
-            Console.WriteLine("------------------------------------------------------------------------");
-            Console.WriteLine($"{lastName}   | { firstName}   | {email}   | {password}   | {role[0]}");
-            Console.WriteLine("-------------------------------------------------------------------------");
+            staffLists[0].FirstName = firstName.ToUpper();
+            staffLists[0].LastName = lastName.ToUpper();
+            staffLists[0].Email = email.ToUpper();
+            staffLists[0].Password = password.ToUpper();
+            staffLists[0].CreatedTime =  DateTime.Today;
+            staffLists[0].ID = 12344;
+
+            //Random rd = new Random();
+
+            Random number = new Random();
+            int staffID = number.Next(100, 200);
+
+            Math.Round(0000.33);
+            //Random rd = new Random();
+
+            //int rand_num = rd.Next(100, 200);
+
+            Console.WriteLine($"Account Creted on: {CreatedTime}");
+            Console.WriteLine("--------------------------");
+            Console.WriteLine($"FIRSTNAME | {firstName}");
+            Console.WriteLine($"LASTNAME  | {lastName}" );
+            Console.WriteLine($"EMAIL     | {email}");
+            Console.WriteLine($"PASSWORD  | {password}");
+            Console.WriteLine("------------------------");
+            Console.WriteLine($"ROLE      | {role}");
+            Console.WriteLine($"ID card   | {staffID}");
+            Console.WriteLine("------------------------");
         }
         public void AddRole(string role)
         {
