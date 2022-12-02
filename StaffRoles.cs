@@ -13,19 +13,5 @@ namespace StaffRecord
         public string teacher = "Teacher";
         public string examOfficer = "Exam Officer";
         public string admin = "Admin";
-        //public StaffRecord(string roles)
-        //{
-           
-        //}
-
-
-        //public void Role()
-        //{
-        //    List<string> roles = new List<string>();
-        //    roles.Add("Pincipal");
-        //    roles.Add("Teacher");
-        //    roles.Add("Exam Officer");
-        //    roles.Add("Admin");
-        //}
     }
 }

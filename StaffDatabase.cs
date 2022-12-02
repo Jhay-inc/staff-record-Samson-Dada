@@ -19,7 +19,7 @@ namespace StaffRecord
             StaffLists[0].LastName = "Beans";
             StaffLists[0].Email = "sam@gmail.com";
             StaffLists[0].Password = "*****";
-            StaffLists[0].CreatedTime = DateTime.Today;
+            //StaffLists[0].CreatedTime = DateTime.Today;
         }
     }
 
