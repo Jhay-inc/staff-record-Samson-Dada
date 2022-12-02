@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace StaffRecord
 {
-    public  class StaffRoles
+    public  static class StaffRoles
     {
-
-        public string pincipalRole = "Pincipal";
-        public string teacher = "Teacher";
-        public string examOfficer = "Exam Officer";
-        public string admin = "Admin";
+        public static string pincipalRole = "Pincipal";
+        public static string teacher = "Teacher";
+        public static string examOfficer = "Exam Officer";
+        public static string admin = "Admin";
     }
 }

@@ -36,6 +36,7 @@ namespace StaffRecord
         public DateTime CreatedTime { get; set; }
         public List<string> ColorList { get; set; }
        public List<string> DepartmentRole { get; set; }
+        public List<string> IdCard { get; set; }
 
     }
 }
