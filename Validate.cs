@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -26,14 +27,42 @@ namespace StaffRecord
             return true;
         }
 
-    public  static string ValidateUserName(string validateStr)
-    {
-        if (string.IsNullOrEmpty(validateStr))
+        public static string ValidateUserName(string validateStr)
         {
-            return string.Empty;
+            if (string.IsNullOrEmpty(validateStr))
+            {
+                return string.Empty;
+            }
+            return char.ToUpper(validateStr[0]) + validateStr.Substring(1);
         }
-        return char.ToUpper(validateStr[0]) + validateStr.Substring(1);
+        public static SecureString PassowrdEncrypt()
+        {
+            var  passString = new SecureString();
+            //passwordStr = passString;
+
+           
+            ConsoleKeyInfo keyInfo;
+
+            do
+            {
+                keyInfo = Console.ReadKey(true);
+                if (!char.IsControl(keyInfo.KeyChar))
+                {
+                    passString.AppendChar(keyInfo.KeyChar);
+                    Console.Write("*");
+                }
+
+
+                else if (keyInfo.Key == ConsoleKey.Backspace && passString.Length > 0)
+                {
+                    passString.RemoveAt(passString.Length - 1);
+                    Console.Write("\b \b");
+
+                }
+            }
+            while (keyInfo.Key != ConsoleKey.Enter);
+            return passString;
+        }
     }
-}
 }
 

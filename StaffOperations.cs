@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Security;
 
 namespace StaffRecord
 {
     public class StaffOperations : StaffRecord
     {
         public StaffOperations()
-        { 
+        {
             Console.WriteLine("......Welcome to staff portal!!!........");
             Console.WriteLine("Enter 1 Non Academic Staff | Enter 2 for Academic Staff | Enter 3 to Login");
 
@@ -18,7 +19,6 @@ namespace StaffRecord
             {
                 if (departmentOption == 1)
                 {
-                    //string testRole = "Non Teaching role";
                     Console.WriteLine("Enter 1 for Exam officer");
                     Console.WriteLine("Non Academic department Enter details............");
                 //firstname
@@ -59,7 +59,8 @@ namespace StaffRecord
                         Console.WriteLine("Enter Passowrd Min 5 Max 11):: ");
                         password = Console.ReadLine();
                         isValidPassword = Validate.ValidatePassoword(password);
-
+                        SecureString pass =   Validate.PassowrdEncrypt();
+                        password = new System.Net.NetworkCredential(string.Empty, pass).Password;
                         if (!isValidPassword)
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -68,17 +69,15 @@ namespace StaffRecord
                         }
                     }
                     while (!isValidPassword);
-                    StaffRegister(firstName, lastName, email, password);
-                   // DateTime testDate = DateTime.Now;
-                    //Console.WriteLine(testDate);
+                    StaffRegister(firstName, lastName, email,  password);
                 }
             }
             else if (departmentOption == 2)
             {
+            Console.WriteLine("bugs");
 
                 if(departmentOption == 2)
                 {
-                    Console.WriteLine("Enter A for Principal || Enter B for Teacher || Enter C for Exam officer || Enter D for Admin");
                 Console.WriteLine("Academic department Enter details");
                      
                     //firstname
@@ -170,39 +169,47 @@ namespace StaffRecord
 
         public void StaffRegister(string firstName, string lastName, string email, string password)
         {
-
-            List<string> role = new List<string>();
-            role.Add(StaffRoles.pincipalRole);
-           
-            //Console.WriteLine("Select Role | Enter A for Princiapl | Enter B for Teacher | Enter C for Admin");
-
+            Console.WriteLine("Enter A for Principal || Enter B for Teacher || Enter C for Exam officer || Enter D for Admin");
             var optionKey = Console.ReadKey().Key;
             Console.Clear();
-                switch (optionKey)
-                {
+            switch (optionKey)
+            {
                 case ConsoleKey.A:
-
-                    AddRole(StaffRoles.pincipalRole);
-                        Console.WriteLine();
-                        break;
-                    case ConsoleKey.B:
-                        AddRole(StaffRoles.teacher);
-                        break;
-                    case ConsoleKey.C:
-                        AddRole(StaffRoles.examOfficer);
-                        break;
-                    default:
+                    var p = StaffRoles.pincipalRole;
+                    Console.WriteLine(p);
+                    Console.WriteLine();
+                    break;
+                case ConsoleKey.B:
+                    var t = StaffRoles.teacherRole;
+                    Console.WriteLine(t);
+                    break;
+                case ConsoleKey.C:
+                    var e= StaffRoles.pincipalRole;
+                    Console.WriteLine(e);
+                    break;
+                default:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.ResetColor();
-
                     break;
-                }
+            }
 
+            string staffRole = "";
             Random number = new Random();
             int staffID = number.Next(1000, 2000);
             ////////////////// dataBase class
+            List<string> roles = new List<string>();
+            roles.Add(StaffRoles.pincipalRole);
+            roles.Add(StaffRoles.teacherRole);
+            roles.Add(StaffRoles.examOfficerRole);
+            roles.Add(StaffRoles.adminRole);
+
+            foreach (var role in roles)
+            {
+                staffRole = role.ToString();
+            }
             List<StaffRecord> staffLists = new List<StaffRecord>();
             staffLists.Add(new StaffRecord());
+
             foreach (StaffRecord staff in staffLists)
             {
                 staff.FirstName = firstName;
@@ -210,11 +217,9 @@ namespace StaffRecord
                 staff.Email = email;
                 staff.Password = password;
                 staff.CreatedTime = DateTime.Today;
-                staff.DepartmentRole = role;
+                staff.DepartmentRole = staffRole;
                 staff.ID = staffID;
-
             }
-           
             if (Console.ReadKey().Key != ConsoleKey.Enter)
             {
                 return;
@@ -222,15 +227,14 @@ namespace StaffRecord
             else
             {
             Console.WriteLine("--------------------------");
+            Console.WriteLine(" User Input");
             Console.WriteLine($"FIRSTNAME | {firstName}");
             Console.WriteLine($"LASTNAME  | {lastName}" );
             Console.WriteLine($"EMAIL     | {email}");
             Console.WriteLine($"PASSWORD  | {password}");
-            Console.WriteLine($"ROLE      | {role}");
+            Console.WriteLine($"ROLE      | {staffRole}");
             Console.WriteLine("------------------------");
             Console.WriteLine("*******ID CARD******");
-
-
                 IdCard = new List<string>();
                 IdCard.Add(firstName);
                 IdCard.Add(lastName);
@@ -249,17 +253,5 @@ namespace StaffRecord
                 }
             }
         }
-        public void AddRole(string role)
-        {
-           var roleList = new List<string>();
-            DepartmentRole = roleList;
-
-            roleList.Add(role);
-            roleList.Add(role);
-            roleList.Add(role);
-            roleList.Add(role);
-          
-        }
-
     }
 }

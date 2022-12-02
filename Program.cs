@@ -8,7 +8,6 @@ namespace StaffRecord
         static void Main(string[] args)
         {
             StaffOperations staff = new StaffOperations();
-            Console.WriteLine("Hello World! program");
         }
     }
 }
